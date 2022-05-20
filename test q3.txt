@@ -1,0 +1,70 @@
+/Q3 in C++: Implement the first method of graph-coloring problem
+/* Q3 Specs
+I. inFile(use argv[1]): a text file contains a list of edges.
+                                             The first number in File is the number of nodes in the graph; then follows
+                                            by a list of edges {<ni,nj>}
+     forExample
+     5 //there are 5 nodes in the graph G
+     1  2
+     2  1
+     4  1
+     1  4
+	  
+II. outFile(use argv[2]): for the output of the assignments of nodes in the graph use the following format:
+        6 // nodes in the graph 
+        1  A //node1 ascii value 66 is A
+        2  B  //node 2 ascii value 67 is B
+        b) outFile2 (use argv[3]): for all debugging prints for partial credit
+
+III. Data structures
+Q3 class
+N (int)
+(int) adjMatrix[][] size of N + 1, should be dynamically allocated. intitially,
+adjMatrix[i][i] set to 1 and all others set to 0
+
+-valtAry[] //a 1D array of size N+1, to store color of nodes: should be dynamically allocated
+// initialie valAry[i] to 0,i = 1to N, except set valAry[0] to 1;
+// for sorting each node's assigned value; 0 means no color has been assigned to node i.
+Methods:
+-loadMatrix(...) // read each pair <ni,nj> from input and set adjMatrix[ni,nj] to 1
+-(bool) checkDone(..) return true if all nodes have been assigned value
+-printAry(valAry,outFile2) //output ValAry to outFile, need to case valAry to (char_ for output A, B, C...
+
+
+IV. main()
+step 0: inFile <- argv[1]
+outfile1 <- open form argv(2)
+outfile2 argv3
+N <- get from inFile
+newValue <- 66 // A's ascii value 
+Step1: loadMatrix (inFile)
+nextNode <- 1
+
+Step3: if valAry[nextNode == 0]
+            if (validCheck (nextNode, newValue) == true)
+                valAry [nextNode] <-newValue
+Step4: nextNode++
+Step 5: repeat step 3 to 4 while nextNode <= N 
+
+Step 6: printAry(valAry,outFile2)// debugging print 
+Step 7:newValue++
+Step8: repeat step 2 to 7 while checkDone() is false
+Step9: close all files
+
+
+V.(bool) validCheck (nextNode,newValue)
+Step 0: j <- 1
+Step1L if(adjMatrix[nextNode][j]==1) and (valAry[j] == newValue) // two adjacent nodes have the same coloring
+                return false 
+Step2: j++
+Step3: repeat step 1 to step 2 while j <= N 
+step4: return true 
+
+
+VI. (bool) checkDone(...)
+step 0: i <- 1
+step 1: if (valAry[1] == 0)
+                return false
+Step 2: i++
+Step 3:repeat step 1 to step 2 while i <= N 
+Step 4: return true */
